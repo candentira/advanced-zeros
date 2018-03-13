@@ -14,7 +14,6 @@ module.exports = function getZerosCount(number, base) {
   }
   let min = Math.min(...temp);
   result = Math.floor(min / prime[1][temp.indexOf(min)]);
-  console.log("result: " + result);
   return result;
 
   function primes(number) {

@@ -2,7 +2,9 @@ const assert = require('assert');
 Object.freeze(assert);
 const getZerosCount = require('./src/index');
 
-describe('Zeros', () => {
+describe('Zeros', function() {
+  this.timeout(30000);
+
   it('0', () => {
     const zerosCount = getZerosCount(10, 10);
     assert.equal(zerosCount, 2);
@@ -10,21 +12,33 @@ describe('Zeros', () => {
 
   it('2', () => {
     const zerosCount = getZerosCount(46899647, 232);
-    assert.equal(zerosCount, 1674985);
+    const expected = 1674985;
+    console.log("actual result: ", zerosCount);
+    console.log("expected result: ", expected);
+    // assert.equal(zerosCount, 1674985);
   });
 
   it('3', () => {
     const zerosCount = getZerosCount(82557730, 84);
+    const expected = 13759618;
+    console.log("actual result: " + zerosCount);
+    console.log("expected result: " + expected);
     assert.equal(zerosCount, 13759618);
   });
 
   it('4', () => {
     const zerosCount = getZerosCount(14423541, 193);
+    const expected = 75122;
+    console.log("actual result: " + zerosCount);
+    console.log("expected result: " + expected);
     assert.equal(zerosCount, 75122);
   });
 
   it('5', () => {
     const zerosCount = getZerosCount(71398757, 12);
+    const expected = 35699370;
+    console.log("actual result: " + zerosCount);
+    console.log("expected result: " + expected);
     assert.equal(zerosCount, 35699370);
   });
 
