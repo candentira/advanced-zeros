@@ -4,17 +4,19 @@ module.exports = function getZerosCount(number, base) {
   let minPrimePower = Math.min(...prPowers.filter(p => p > 0));
   let minPrimes = PRIME_NUMBERS
     .filter((p, i) => prPowers[i] == minPrimePower);
-  let temp = minPrimes.map(() => 0);
-  for(let i = 2; i <= number; i++) {
-    temp = _arraysSum(temp, _primesPowers(minPrimes, i));
-  }
-  return Math.floor(Math.min(...temp) / minPrimePower);
-  
-  function _arraysSum(arr1, arr2) {
-    return arr1.map((el, i) => {
-      return el + (arr2[i] || 0);
-    });
-  }
+  let temp = [];//minPrimes.map(() => 0);
+  minPrimes.forEach(p => {
+    let t = 0;
+    let numberCopy = number;
+    while(numberCopy / p >= 1) {
+      t += Math.floor(numberCopy / p);
+      numberCopy /= p;
+    }
+    temp.push(t);
+  });
+  let result = Math.min(...temp);
+  console.log("result", result);
+  return result;
 
   function _primesPowers(primeNumbers, number) {
     let powers = [];
